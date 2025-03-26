@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8" />
+    <title>Detail todočka</title>
+</head>
+<body>
+<h1><%= todo.title %></h1>
+<p>Stav: <strong><%= todo.done ? "✅ hotovo" : "❌ nehotovo" %></strong></p>
+
+<form method="get" action="/todos/<%= todo.id %>/toggle">
+    <button type="submit">Změnit stav</button>
+</form>
+
+<form method="get" action="/todos/<%= todo.id %>/remove" onsubmit="return confirm('Opravdu smazat?')">
+    <button type="submit">Smazat todo</button>
+</form>
+
+<form method="post" action="/todos/<%= todo.id %>/edit">
+    <input name="title" value="<%= todo.title %>" required />
+    <button type="submit">Upravit titulek</button>
+</form>
+
+<p><a href="/">← Zpět na seznam</a></p>
+</body>
+</html>
